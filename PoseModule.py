@@ -21,6 +21,7 @@ class poseDetector():
 
         imgRGB = cv2.cvtColor(img,cv2.COLOR_BGR2RGB)
         self.results = self.pose.process(imgRGB)
+
 	print("Testing4")
         if self.results.pose_landmarks:
             if draw:
