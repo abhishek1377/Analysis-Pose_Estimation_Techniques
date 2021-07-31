@@ -37,6 +37,7 @@ def image_classifaction_through_folder(directory):
     total_count = 0
     successful_count = 0
     unsuccessful_classified = []
+    key_points = []
 
     for root,_,files in os.walk(directory):
 
@@ -44,6 +45,7 @@ def image_classifaction_through_folder(directory):
             total_count += 1
             category = "unknown"
             current_pose_directory = root.split("\\")[-1]
+            image_key_points = []
             try:
                 cap = cv2.VideoCapture(os.path.join(root,fileName))
                 while True:
@@ -54,13 +56,15 @@ def image_classifaction_through_folder(directory):
                         if len(lmList) != 0:
                             for i in range(len(lmList)):
                                 lmList[i][4] = 1 - lmList[i][4]
+                                image_key_points.append(lmList[i][3])
+                                image_key_points.append(lmList[i][4])
+                            # print(lmList)
                             category = cm.classifier(lmList, landmarks)
                             if category == current_pose_directory:
                                 categories[category] += 1
                                 successful_count += 1
                             else:
                                 unsuccessful_classified.append(os.path.join(root,fileName))
-
                     else:
                         break
                     break
@@ -71,6 +75,9 @@ def image_classifaction_through_folder(directory):
                 if len(lmList) != 0:
                     for i in range(len(lmList)):
                         lmList[i][4] = 1 - lmList[i][4]
+                        image_key_points.append(lmList[i][3])
+                        image_key_points.append(lmList[i][4])
+                    # print(lmList)
                     category = cm.classifier(lmList, landmarks)
                     if category == current_pose_directory:
                         categories[category] += 1
@@ -78,14 +85,19 @@ def image_classifaction_through_folder(directory):
                     else:
                         unsuccessful_classified.append(os.path.join(root, fileName))
 
-
-            print("after classification:", "root: ",root," filename:",fileName,"current pose being identified: ", current_pose_directory," identified pose: ", category, successful_count, total_count)
+            if len(image_key_points) != 0:
+                image_key_points.append(current_pose_directory)
+                image_key_points.append(fileName)
+                print(image_key_points)
+                key_points.append(image_key_points)
+            # print("after classification:", "root: ",root," filename:",fileName,"current pose being identified: ", current_pose_directory," identified pose: ", category, successful_count, total_count)
     print(categories,successful_count,total_count)
-    return unsuccessful_classified
+    return key_points
 
 def main():
     directory = 'yoga poses/Train'
-    failed = image_classifaction_through_folder(directory)
+    key = image_classifaction_through_folder(directory)
+
     # for img in failed:
     #     print(img)
     #     single_image_classification(img)
