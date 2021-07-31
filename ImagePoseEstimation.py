@@ -85,6 +85,7 @@ def image_classifaction_through_folder(directory):
 
 def main():
     directory = 'yoga poses/Train'
+    print("git test")
     failed = image_classifaction_through_folder(directory)
     # for img in failed:
     #     print(img)
