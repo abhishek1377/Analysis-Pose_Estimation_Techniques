@@ -8,7 +8,6 @@ pTime = 0
 detector = pm.poseDetector()
 landmarks = pm.assign_landmarks()
 
-
 def single_image_classification(imgPath):
     pTime = 0
     category = "unknown"
@@ -66,6 +65,7 @@ def image_classifaction_through_folder(directory):
                     else:
                         break
                     break
+
             except:
                 img = cv2.imread(os.path.join(root, fileName))
                 img = detector.findPose(img)
@@ -92,7 +92,7 @@ def main():
     #     print(img)
     #     single_image_classification(img)
 
-
 if __name__ == "__main__":
     main()
+
 
