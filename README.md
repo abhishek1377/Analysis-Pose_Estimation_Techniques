@@ -22,6 +22,8 @@ This project deals with 2 issues:
      Since the landmark data can be captured for real time videos as well, I have attempted to count the reps for a sample excercise based on the changes in              landmarks relative positions. 
     
     
+    
+    
   
   
   
