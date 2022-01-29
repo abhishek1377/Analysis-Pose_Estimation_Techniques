@@ -7,7 +7,6 @@ import numpy as np
 mp_drawing = mp.solutions.drawing_utils
 mp_pose = mp.solutions.pose
 
-
 def pose_estimate(pose_res, image):
     ##left_body_indices = [7,9,11,13,15,17,19,21,23,25,27,29,31]
     ##right_body_indices = [8,10,12,14,16,18,20,22,24,26,28,30,32]
