@@ -1,4 +1,4 @@
-# Pose_Estimation
+# Pose_Estimation_Analysis
 
 This project deals with 2 issues: 
 1. Use of openCV and Mediapipe to first gain body landmark coordinates on a projected on a 2-d surface.
