@@ -6,11 +6,11 @@ This project deals with 2 issues:
 
 
 
-     a. Imgage classification:
+     a. Imgage classification(pose estimation folder):
      For Image classification, I have used a supervised data of classified images and trained a neural network classification model for possible identification of        various yoga poses using relative positions of body landmarks from the available images.
   
-     b. Reps counting for a sample excercise:
-     Since the landmark data can be captured for real time videos as well, I have attempted to count the reps for a sample excercise based on the changes in              landmarks relative positions.
+     b. Reps counting for a sample excercise(Workout helper folder):
+     Since the landmark data can be captured for real time videos as well, I have attempted to count the reps for a sample excercise based on the changes in              landmarks relative positions. 
     
     
   
